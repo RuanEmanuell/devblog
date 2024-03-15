@@ -1,4 +1,4 @@
-import PostData, { getPostData } from "@/services/getposts";
+import PostData, { getPostData } from "../services/getposts";
 import Preview from "../components/preview";
 import NavBar from "../components/navbar";
 import "../app/globals.css";
@@ -24,3 +24,4 @@ export async function getStaticProps(){
     }
   }
 }
+

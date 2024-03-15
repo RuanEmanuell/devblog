@@ -19,19 +19,19 @@ export async function getPostData(): Promise<PostData[]> {
     const allPosts = allPostsName.map(async name => {
         const fullPath = path.join(postDirectory, `${name}`);
         const fileContents = fs.readFileSync(fullPath, "utf8");
-    
+
         const matterResult = matter(fileContents);
-    
+
         const processedContent = await remark().use(html).process(matterResult.content);
         const contentHtml = processedContent.toString();
-    
+
         const { title, date, preview, image } = matterResult.data;
-    
+
         return {
-            id: name,
+            id: name.substring(0, 1),
             contentHtml,
-            title: title as string, 
-            date: date as string, 
+            title: title as string,
+            date: date as string,
             preview: preview as string,
             image: image as string
         };
