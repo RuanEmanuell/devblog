@@ -1,0 +1,12 @@
+h1, h2{
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+h1{
+    font-size: larger;
+}
+
+img{
+    margin: 15px 0;
+}
