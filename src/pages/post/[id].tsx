@@ -12,13 +12,13 @@ export default function Post({ postData }: { postData: PostData[] }) {
     const previousPost = postData.find(post => parseInt(post.id) === parseInt(id as string) - 1);
     const nextPost = postData.find(post => parseInt(post.id) === parseInt(id as string) + 1);
 
-    if (!post) {
-        return <div>Carregando</div>;
-    }
-
     const postIndex = id ? parseInt(id as string) : 0;
 
     const justifyPostButtons = (postIndex === 1 ? "justify-end" : postIndex === postData.length ? "justify-start" : "justify-between");
+
+    if (!post) {
+        return <div>Carregando</div>;
+    }
 
     return (
         <>
@@ -28,20 +28,20 @@ export default function Post({ postData }: { postData: PostData[] }) {
                     <h1 className="text-5xl font-bold">{post.title}</h1>
                     <h2 className="my-3">{post.date}</h2>
                     <article dangerouslySetInnerHTML={{ __html: post.contentHtml }}></article>
-                    <div className={`flex ${justifyPostButtons} align-center my-10`}>
+                    <nav className={`flex ${justifyPostButtons} align-center my-10`}>
                         {postIndex > 1 ? <Link href={`/post/${postIndex - 1}`}>
-                            <div className="border-2 border-black-100 rounded-sm p-2 hover:border-blue-100">
-                                <h3 className="text-blue-500 text-2xl">Post anterior</h3>
-                                <p className="text-center text-sm">"{previousPost!.title}"</p>
+                            <div className="border-2 border-black-100 rounded-sm py-2 px-4 hover:border-blue-200">
+                                <p className="text-blue-500 text-sm text-center">Post anterior</p>
+                                <h3 className="text-center text-xl">"{previousPost!.title}"</h3>
                             </div>
                         </Link> : <></>}
                         {postIndex < postData.length ? <Link href={`/post/${postIndex + 1}`}>
-                            <div className="border-2 border-black-100 rounded-sm p-2 hover:border-blue-100">
-                                <h3 className="text-blue-500 text-2xl">Post seguinte</h3>
-                                <p className="text-center text-sm">"{nextPost!.title}"</p>
+                            <div className="border-2 border-black-100 rounded-sm py-2 px-4 hover:border-blue-200">
+                                <p className="text-blue-500 text-sm text-center m-auto">Post seguinte</p>
+                                <h3 className="text-center text-xl m-auto">"{nextPost!.title}"</h3>
                             </div>
                         </Link> : <></>}
-                    </div>
+                    </nav>
                 </main>
             </div>
         </>

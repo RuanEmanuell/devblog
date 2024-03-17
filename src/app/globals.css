@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    min-width: 320px;
+}
+
 a:hover{
     h1{
     text-decoration: underline
