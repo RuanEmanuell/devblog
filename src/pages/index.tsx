@@ -6,10 +6,17 @@ import NavBar from "@/components/navbar";
 import Loading from "@/components/loading";
 
 type Language = "Português" | "English";
+type Theme = "Dark" | "Light";
 
 export default function Home() {
   const [currentLanguage, setCurrentLanguage] = useState<Language>("English");
+  const [currentTheme, setCurrentTheme] = useState<Theme>("Light");
   const [postData, setPostData] = useState<PostData[] | undefined>(undefined);
+
+  const theme: Record<Theme, string[]> = {
+    "Light": ["bg-white", "text-blue-500", "text-black"],
+    "Dark": ["bg-gray-700", "text-white", "text-white"]
+  }
 
   const captions: Record<Language, string[]> = {
     "English": ["Latest posts", "Read more"],
@@ -26,42 +33,55 @@ export default function Home() {
 
   useEffect(() => {
     const storageLanguage = localStorage.getItem("language") ? localStorage.getItem("language") as Language : "English";
+    const storageTheme = localStorage.getItem("theme") ? localStorage.getItem("theme") as Theme : "Light";
 
     if (storageLanguage) {
       setCurrentLanguage(storageLanguage);
     }
 
+    if (storageTheme) {
+      setCurrentTheme(storageTheme);
+    }
+
     function handleNavbarLanguageChange(event: CustomEventInit) {
       const storageLanguage = localStorage.getItem("language") ? localStorage.getItem("language") as Language : "English";
+      setCurrentLanguage(storageLanguage);
       setPostData(undefined);
       fetchData(storageLanguage);
+  }
+
+    function handleNavbarThemeChange(event: CustomEventInit) {
+      const storageTheme = localStorage.getItem("theme") ? localStorage.getItem("theme") as Theme : "Light";
+      setCurrentTheme(storageTheme);
     }
 
     fetchData(storageLanguage);
 
-    document.addEventListener('languageChange', handleNavbarLanguageChange)
+    document.addEventListener('languageChange', handleNavbarLanguageChange);
+    document.addEventListener('themeChange', handleNavbarThemeChange);
 
     return () => {
       document.removeEventListener('languageChange', handleNavbarLanguageChange);
+      document.removeEventListener('themeChange', handleNavbarThemeChange);
     }
   }, []);
 
   return (
     <>
       <NavBar />
-      <main className="flex justify-center bg-white">
+      <main className={`flex justify-center ${theme[currentTheme][0]}`}>
         {!postData ? <Loading></Loading> :
           <div className="max-w-screen-md m-auto">
-            <h2 className="my-5 text-blue-500 mx-5">{captions[currentLanguage][0]}</h2>
+            <h2 className={`my-5 ${theme[currentTheme][1]} mx-5`}>{captions[currentLanguage][0]}</h2>
             {postData.map(post =>
               <Link key={post.id} href={`/post/${post.id}?language=${currentLanguage}`}>
                 <div className="mx-5 my-7">
                   <div>
-                    <h1 className="text-blue-500 text-5xl font-bold">{post.title}</h1>
-                    <h2 className="my-3 text-blue-500">{post.date}</h2>
-                    <h3 className="my-2">{post.preview}</h3>
+                    <h1 className={`${theme[currentTheme][1]} text-5xl font-bold`}>{post.title}</h1>
+                    <h2 className={`my-3 ${theme[currentTheme][1]}`}>{post.date}</h2>
+                    <h3 className={`my-2 ${theme[currentTheme][2]}`}>{post.preview}</h3>
                     <img src={post.image} className="w-full max-h-48 object-cover" alt={post.title}></img>
-                    <h3 className="text-end text-blue-500 my-7">{captions[currentLanguage][1]}</h3>
+                    <h3 className={`text-end ${theme[currentTheme][1]} my-7`}>{captions[currentLanguage][1]}</h3>
                   </div>
                 </div>
               </Link>
