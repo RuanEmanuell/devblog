@@ -8,8 +8,8 @@ import { useRouter } from "next/router";
 type Language = "Português" | "English";
 
 export default function NavBar() {
-  const [currentLanguage, setCurrentLanguage] = useState<string>("English");
-  
+  const [currentLanguage, setCurrentLanguage] = useState<Language>("English");
+
   const options: Record<Language, string[]> = {
     "English": ["Home", "Portfolio"],
     "Português": ["Início", "Portfólio"]
@@ -21,11 +21,11 @@ export default function NavBar() {
     const newLanguage = currentLanguage === "English" ? "Português" : "English";
     setCurrentLanguage(newLanguage);
     localStorage.setItem("language", newLanguage);
-    document.dispatchEvent(new CustomEvent('languageChange', {detail: newLanguage}));
+    document.dispatchEvent(new Event("languageChange"));
   }
 
   useEffect(() => {
-    const storageLanguage = localStorage.getItem("language");
+    const storageLanguage = localStorage.getItem("language") as Language;
     if (storageLanguage) {
       setCurrentLanguage(storageLanguage);
     }
@@ -39,10 +39,10 @@ export default function NavBar() {
         className="w-10 p-1 h-auto mx-2 bg-white rounded-full border-2 border-solid border-gray-200"
       />
       <Link href="/">
-        <h3 className="mx-5 text-white hover:cursor-pointer hover:text-black">{options[currentLanguage as Language][0]}</h3>
+        <h3 className="mx-5 text-white hover:cursor-pointer hover:text-black">{options[currentLanguage][0]}</h3>
       </Link>
       <a target="_blank" href="https://ruanemanuellportfolio.netlify.app/">
-        <h3 className="mx-5 text-white hover:cursor-pointer hover:text-black">{options[currentLanguage as Language][1]}</h3>
+        <h3 className="mx-5 text-white hover:cursor-pointer hover:text-black">{options[currentLanguage][1]}</h3>
       </a>
       <section className="w-full flex justify-end">
         <button className="mx-5 text-white" onClick={changeLanguage}>🌐{currentLanguage}</button>

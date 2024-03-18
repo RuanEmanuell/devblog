@@ -13,8 +13,11 @@ interface PostData {
     image: string;
 }
 
-export async function getPostData(): Promise<PostData[]> {
-    const postDirectory = path.join(process.cwd(), "src/posts/");
+type Language = "Português" | "English";
+
+export async function getPostData(language: Language): Promise<PostData[]> {
+    const postLanguage = language === "Português" ? "br" : "en";
+    const postDirectory = path.join(process.cwd(), `src/posts/${postLanguage}`);
     const allPostsName = fs.readdirSync(postDirectory);
     const allPosts = allPostsName.map(async name => {
         const fullPath = path.join(postDirectory, `${name}`);
