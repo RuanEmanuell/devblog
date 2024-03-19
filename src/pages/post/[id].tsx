@@ -87,13 +87,13 @@ export default function Post() {
                         {postIndex > 1 ? <Link href={`/post/${postIndex - 1}`}>
                             <div className="border-2 border-black-100 rounded-sm py-2 px-4 hover:border-blue-200">
                             <p className={`${theme[currentTheme][1]} text-sm text-center m-auto`}>{captions[currentLanguage][0]}</p>
-                                <h3 className="text-center text-xl">"{previousPost!.title}"</h3>
+                                <h3 className="text-center text-xl">{previousPost!.title}</h3>
                             </div>
                         </Link> : <></>}
                         {postData && postIndex < postData.length ? <Link href={`/post/${postIndex + 1}`}>
                             <div className="border-2 border-black-100 rounded-sm py-2 px-4 hover:border-blue-200">
                                 <p className={`${theme[currentTheme][1]} text-sm text-center m-auto`}>{captions[currentLanguage][1]}</p>
-                                <h3 className="text-center text-xl m-auto">"{nextPost!.title}"</h3>
+                                <h3 className="text-center text-xl m-auto">{nextPost!.title}</h3>
                             </div>
                         </Link> : <></>}
                     </nav>
