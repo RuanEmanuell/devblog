@@ -6,7 +6,7 @@
 This project it's a personal blog to talk about topics that interest me, especially technology and programming.
 
 ### Onde posso acessá-lo? 🖥
-Você pode acessar o site <a href='https://ruanemanuellportfolio.netlify.app/'>aqui</a>.
+Você pode acessar o site <a href='https://devblog-ruan.vercel.app/'>aqui</a>.
 
 ### Quais tecnologias foram utilizadas para construí-lo? 🚀
 Ele foi feito com NextJS.
