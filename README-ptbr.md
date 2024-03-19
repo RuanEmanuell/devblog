@@ -3,7 +3,7 @@
 ## DevBlog
 
 ### O que é isso? 🤔
-This project it's a personal blog to talk about topics that interest me, especially technology and programming.
+Esse projeto é um blog pessoal para falar de assuntos que me interessam na área de programação e tecnologia.
 
 ### Onde posso acessá-lo? 🖥
 Você pode acessar o site <a href='https://devblog-ruan.vercel.app/'>aqui</a>.
