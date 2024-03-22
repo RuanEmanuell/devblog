@@ -71,7 +71,7 @@ export default function Home() {
       <NavBar />
       <main className={`flex justify-center ${theme[currentTheme][0]}`}>
         {!postData ? <Loading></Loading> :
-          <div className="max-w-screen-md m-auto h-screen">
+          <div className="max-w-screen-md m-auto">
             <h2 className={`my-5 ${theme[currentTheme][1]} mx-5`}>{captions[currentLanguage][0]}</h2>
             {postData.map(post =>
               <Link key={post.id} href={`/post/${post.id}?language=${currentLanguage}`}>
