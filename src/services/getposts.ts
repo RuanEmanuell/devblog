@@ -19,7 +19,7 @@ export async function getPostData(language: Language): Promise<PostData[]> {
     const postLanguage = language === "Português" ? "br" : "en";
     const postDirectory = path.join(process.cwd(), `src/posts/${postLanguage}`);
     const allPostsName = fs.readdirSync(postDirectory);
-    const allPosts = allPostsName.map(async name => {
+    const allPosts = allPostsName.sort((a,b) => parseInt(b) - parseInt(a)).map(async name => {
         const fullPath = path.join(postDirectory, `${name}`);
         const fileContents = fs.readFileSync(fullPath, "utf8");
 
