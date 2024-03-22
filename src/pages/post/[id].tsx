@@ -45,7 +45,7 @@ export default function Post() {
     }
 
     useEffect(() => {
-        const storageLanguage = localStorage.getItem("language") as Language;
+        const storageLanguage = localStorage.getItem("language") ? localStorage.getItem("language") as Language : "English";
         const storageTheme = localStorage.getItem("theme") ? localStorage.getItem("theme") as Theme : "Light";
 
         setCurrentLanguage(storageLanguage);
