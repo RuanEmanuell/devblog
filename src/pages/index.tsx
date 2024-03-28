@@ -4,24 +4,12 @@ import "../app/globals.css";
 import { useEffect, useState } from "react";
 import NavBar from "@/components/navbar";
 import Loading from "@/components/loading";
-
-type Language = "Português" | "English";
-type Theme = "Dark" | "Light";
+import {Language, Theme, captions, colors} from "../services/utils";
 
 export default function Home() {
   const [currentLanguage, setCurrentLanguage] = useState<Language>("English");
   const [currentTheme, setCurrentTheme] = useState<Theme>("Light");
   const [postData, setPostData] = useState<PostData[] | undefined>(undefined);
-
-  const theme: Record<Theme, string[]> = {
-    "Light": ["bg-white", "text-blue-500", "text-black"],
-    "Dark": ["bg-gray-700", "text-white", "text-white"]
-  }
-
-  const captions: Record<Language, string[]> = {
-    "English": ["Latest posts", "Read more"],
-    "Português": ["Últimos posts", "Ler mais"]
-  };
 
   async function fetchData(language: Language) {
     const response = await fetch(`/api/returnposts?language=${language}`);
@@ -69,19 +57,19 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <main className={`flex justify-center ${theme[currentTheme][0]}`}>
+      <main className={`flex justify-center ${colors[currentTheme][1]}`}>
         {!postData ? <Loading></Loading> :
           <div className="max-w-screen-md m-auto">
-            <h2 className={`my-5 ${theme[currentTheme][1]} mx-5`}>{captions[currentLanguage][0]}</h2>
+            <h2 className={`my-5 ${colors[currentTheme][3]} mx-5`}>{captions[currentLanguage][4]}</h2>
             {postData.map(post =>
               <Link key={post.id} href={`/post/${post.id}?language=${currentLanguage}`}>
                 <div className="mx-5 my-7">
                   <div>
-                    <h1 className={`${theme[currentTheme][1]} text-5xl font-bold`}>{post.title}</h1>
-                    <h2 className={`my-3 ${theme[currentTheme][1]}`}>{post.date}</h2>
-                    <h3 className={`my-2 ${theme[currentTheme][2]}`}>{post.preview}</h3>
+                    <h1 className={`${colors[currentTheme][3]} text-5xl font-bold`}>{post.title}</h1>
+                    <h2 className={`my-3 ${colors[currentTheme][3]}`}>{post.date}</h2>
+                    <h3 className={`my-2 ${colors[currentTheme][2]}`}>{post.preview}</h3>
                     <img src={post.image} className="w-full max-h-48 object-cover" alt={post.title}></img>
-                    <h3 className={`text-end ${theme[currentTheme][1]} my-7`}>{captions[currentLanguage][1]}</h3>
+                    <h3 className={`text-end ${colors[currentTheme][3]} my-7`}>{captions[currentLanguage][5]}</h3>
                   </div>
                 </div>
               </Link>

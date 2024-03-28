@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import {Language, Theme} from "../services/utils";
 
 interface PostData {
     id: string;
@@ -13,7 +14,6 @@ interface PostData {
     image: string;
 }
 
-type Language = "Português" | "English";
 
 export async function getPostData(language: Language): Promise<PostData[]> {
     const postLanguage = language === "Português" ? "br" : "en";
