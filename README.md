@@ -15,7 +15,7 @@ It was made with NextJS.
 
      Clone the repository.
      Install dependencies using 'npm install'.
-     Run React with 'npm run dev'.
+     Run NextJS with 'npm run dev'.
      Access http://localhost:3000 in your browser.
     
 ### Here are some images of the project running: ⚡️

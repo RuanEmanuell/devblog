@@ -15,12 +15,12 @@ Ele foi feito com NextJS.
 
      Clone o repositório.
      Instale as dependências com 'npm install'.
-     Inicie o React com 'npm start'.
+     Inicie o NextJS com 'npm run dev'.
      Accesse http://localhost:3000 no seu navegador.
     
 ### Aqui estão algumas imagens do projeto em execução: ⚡️
 
-| ![devblog1](https://github.com/RuanEmanuell/devblog/assets/113607857/76b49642-3153-4f61-bafa-44b38ca4bbdb) | ![devblog2](https://github.com/RuanEmanuell/devblog/assets/113607857/838ae3be-c6e5-4fc7-beaa-ec7c67069eaf) |
-|:---:|:---:|
+![devblog1](https://github.com/RuanEmanuell/devblog/assets/113607857/76b49642-3153-4f61-bafa-44b38ca4bbdb)
+![devblog2](https://github.com/RuanEmanuell/devblog/assets/113607857/838ae3be-c6e5-4fc7-beaa-ec7c67069eaf)
 
 
