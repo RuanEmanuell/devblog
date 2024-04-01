@@ -7,8 +7,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ParsedUrlQuery } from "querystring";
 import Loading from "@/components/loading";
-import {Language, Theme, captions, colors} from "../../services/utils";
+import {Language, Theme, captions} from "../../services/utils";
 
+const colors: Record<Theme, string[]> = {
+    "Light": ["bg-blue-500", "bg-white", "text-black", "text-blue-500"],
+    "Dark": ["bg-black", "bg-gray-700", "text-white", "text-white"]
+}
+  
 export default function Post() {
     const router = useRouter();
     const { id } = router.query;

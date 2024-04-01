@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import "./styles/loading.css";
 
-import { Theme, colors } from "@/services/utils";
+import { Theme } from "@/services/utils";
+
+const colors: Record<Theme, string[]> = {
+    "Light": ["bg-blue-500", "bg-white", "text-black", "text-blue-500"],
+    "Dark": ["bg-black", "bg-gray-700", "text-white", "text-white"]
+}
 
 export default function Loading() {
     const [currentTheme, setCurrentTheme] = useState<Theme>("Light");
@@ -9,12 +14,12 @@ export default function Loading() {
     useEffect(() => {
         const storageTheme = localStorage.getItem("theme") ? localStorage.getItem("theme") as Theme : "Light";
         setCurrentTheme(storageTheme);
-        
+
         function handleNavbarThemeChange(event: CustomEventInit) {
             const storageTheme = localStorage.getItem("theme") ? localStorage.getItem("theme") as Theme : "Light";
             setCurrentTheme(storageTheme);
         }
-        
+
         document.addEventListener('themeChange', handleNavbarThemeChange);
 
         return () => {
@@ -22,10 +27,10 @@ export default function Loading() {
         }
     }, []);
     return (
-        <div style = {{height: "100vh", width: "100vw"}}>
-        <div className={`loadingBox ${colors[currentTheme][0]}`}>
-            <div className={`loading ${colors[currentTheme][0]}`}></div>
-        </div>
+        <div style={{ height: "100vh", width: "100vw" }}>
+            <div className={`loadingBox ${colors[currentTheme][0]}`}>
+                <div className={`loading ${colors[currentTheme][0]}`}></div>
+            </div>
         </div>
     )
 }

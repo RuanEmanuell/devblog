@@ -4,7 +4,12 @@ import MenuIcon from "../app/images/menu.png";
 import "../app/globals.css";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import {Language, Theme, captions, colors} from "../services/utils";
+import {Language, Theme, captions} from "../services/utils";
+
+const colors: Record<Theme, string[]> = {
+  "Light": ["bg-blue-500", "bg-white", "text-black", "text-blue-500"],
+  "Dark": ["bg-black", "bg-gray-700", "text-white", "text-white"]
+}
 
 export default function NavBar() {
   const [currentLanguage, setCurrentLanguage] = useState<Language>("English");
