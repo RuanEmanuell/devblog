@@ -28,8 +28,8 @@ export default function Loading() {
     }, []);
     return (
         <div style={{ height: "100vh", width: "100vw" }}>
-            <div className={`loadingBox ${colors[currentTheme][0]}`}>
-                <div className={`loading ${colors[currentTheme][0]}`}></div>
+            <div className={`loadingBox ${colors[currentTheme][1]}`}>
+                <div className={`loading ${colors[currentTheme][1]}`}></div>
             </div>
         </div>
     )

@@ -9,7 +9,7 @@ This project it's a personal blog to talk about topics that interest me, especia
 You can acess the website <a href = 'https://devblog-ruan.vercel.app/'> here </a>
 
 ### Which tecnologies were used to build it? 🚀 
-It was made with NextJS.
+It was made with NextJS and TailwindCSS.
 
 ### How to run 🏃
 

@@ -9,7 +9,7 @@ Esse projeto é um blog pessoal para falar de assuntos que me interessam na áre
 Você pode acessar o site <a href='https://devblog-ruan.vercel.app/'>aqui</a>.
 
 ### Quais tecnologias foram utilizadas para construí-lo? 🚀
-Ele foi feito com NextJS.
+Ele foi feito com NextJS e TailwindCSS.
 
 ### Como executar em modo de desenvolvimento 🏃
 
